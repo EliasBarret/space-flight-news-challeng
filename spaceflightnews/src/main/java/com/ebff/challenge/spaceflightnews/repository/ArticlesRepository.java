@@ -1,4 +1,4 @@
-package repository;
+package com.ebff.challenge.spaceflightnews.repository;
 
 import com.ebff.challenge.spaceflightnews.model.Articles;
 import org.springframework.data.mongodb.repository.MongoRepository;
