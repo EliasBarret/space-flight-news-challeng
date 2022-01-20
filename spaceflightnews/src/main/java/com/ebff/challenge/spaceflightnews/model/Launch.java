@@ -2,14 +2,13 @@ package com.ebff.challenge.spaceflightnews.model;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.annotation.Id;
 
-@Document
+@Document(collection = "spaceflightCL")
+@Data
 @Getter
 @Setter
-public class Launches {
+public class Launch {
 
-    @Id
     private String id;
     private String provider;
 }

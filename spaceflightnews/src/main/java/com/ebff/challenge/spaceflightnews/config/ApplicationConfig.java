@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -29,12 +30,14 @@ public class ApplicationConfig extends AbstractMongoClientConfiguration {
     public MongoClient mongoClient() {
 
         ConnectionString connectionString = new ConnectionString(env.getProperty("mongodb.connection.string"));
-
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
 
-        return MongoClients.create(mongoClientSettings);
+        MongoClient mongoClient = MongoClients.create(mongoClientSettings);
+        MongoDatabase database = mongoClient.getDatabase("spaceflightDB");
+
+        return mongoClient;
     }
 
     @Override

@@ -1,16 +1,22 @@
 package com.ebff.challenge.spaceflightnews.model;
 
 import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.annotation.Id;
 
-@Document
+
+import java.util.List;
+
+@Document(collection = "spaceflightCL")
+@Data
 @Getter
 @Setter
-public class Articles {
+public class Article {
 
     @Id
+    private ObjectId _id;
     private Long id;
     private Boolean featured;
     private String title;
@@ -21,8 +27,8 @@ public class Articles {
     private String publishedAt;
 
     @DBRef
-    private Events events;
+    private List<Event> events;
     @DBRef
-    private Launches launches;
+    private List<Launch> launches;
 
 }
