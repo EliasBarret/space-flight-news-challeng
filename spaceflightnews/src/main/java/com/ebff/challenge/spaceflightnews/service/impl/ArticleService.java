@@ -2,20 +2,19 @@ package com.ebff.challenge.spaceflightnews.service.impl;
 
 import com.ebff.challenge.spaceflightnews.exception.CustomException;
 import com.ebff.challenge.spaceflightnews.model.Article;
-import com.ebff.challenge.spaceflightnews.model.dto.ArticleDto;
 import com.ebff.challenge.spaceflightnews.repository.ArticleRepository;
 import com.ebff.challenge.spaceflightnews.service.IArticleService;
 import com.ebff.challenge.spaceflightnews.util.Constants;
 import com.ebff.challenge.spaceflightnews.util.Response;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,8 +28,12 @@ public class ArticleService implements IArticleService {
         return articleRepository.findAll(pageable);
     }
 
+    public List<Article> insert(List<Article> articles) {
+        return articleRepository.saveAll(articles);
+    }
+
     @Override
-    public Article findById(Long id) {
+    public Article findById(Long id){
         try{
             var article = articleRepository.findById(id);
             return article.get();
@@ -41,7 +44,7 @@ public class ArticleService implements IArticleService {
 
     @Override
     public Article update(Article article, Long id) {
-        Optional<Article> art = articleRepository.findById(id);
+       Optional<Article> art = articleRepository.findById(id);
 
         if(art.isPresent()){
             art.get().setFeatured(article.getFeatured());
@@ -68,12 +71,5 @@ public class ArticleService implements IArticleService {
        }else{
            throw new CustomException(Constants.ARTICLE_NOT_FOUND);
        }
-    }
-
-    public Article insert(ArticleDto articleDto) {
-        ModelMapper modelMapper = new ModelMapper();
-        Article article = modelMapper.map(articleDto, Article.class);
-
-        return articleRepository.save(article);
     }
 }

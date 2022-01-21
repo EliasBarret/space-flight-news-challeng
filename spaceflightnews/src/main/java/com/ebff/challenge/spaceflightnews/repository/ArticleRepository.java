@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 @Repository
 public interface ArticleRepository extends MongoRepository<Article, Long> {
     Page<Article> findAll(Pageable pageable);

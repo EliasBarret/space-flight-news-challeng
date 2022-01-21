@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ArticleDto {
 
-    @JsonProperty("id")
+    @JsonProperty
     private Long id;
     @JsonProperty("title")
     private String title;

@@ -1,11 +1,9 @@
 package com.ebff.challenge.spaceflightnews.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ import java.util.List;
 public class Article {
 
     @Id
-    private ObjectId _id;
+    @JsonProperty
     private Long id;
     private Boolean featured;
     private String title;
@@ -26,9 +24,8 @@ public class Article {
     private String summary;
     private String publishedAt;
 
-    @DBRef
     private List<Event> events;
-    @DBRef
+
     private List<Launch> launches;
 
 }

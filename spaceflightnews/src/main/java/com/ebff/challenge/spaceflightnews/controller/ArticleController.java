@@ -2,7 +2,6 @@ package com.ebff.challenge.spaceflightnews.controller;
 
 import com.ebff.challenge.spaceflightnews.model.Article;
 import com.ebff.challenge.spaceflightnews.model.dto.ArticleAlterDto;
-import com.ebff.challenge.spaceflightnews.model.dto.ArticleDto;
 import com.ebff.challenge.spaceflightnews.service.IArticleService;
 
 import com.ebff.challenge.spaceflightnews.util.Constants;
@@ -12,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -52,8 +49,8 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/{id}")
-    public ResponseEntity<Article> findById(@PathVariable("id") Long id){
-        return new ResponseEntity<>(iArticleService.findById(id), HttpStatus.OK);
+    public ResponseEntity<Article> findById(@PathVariable("id") Long id, Pageable pageable){
+        return new ResponseEntity(iArticleService.findById(id), HttpStatus.OK);
     }
 
     @PutMapping("/articles/{id}")
@@ -68,11 +65,10 @@ public class ArticleController {
     }
 
     @PostMapping("/articles")
-    public ResponseEntity<Article> create(@RequestBody @Valid ArticleDto articleDto){
-        Article article = new ModelMapper().map(articleDto, Article.class);
+    public ResponseEntity<List<Article>> create(@RequestBody @Valid List<Article> articles){
         URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest().path("/articles/")
-                    .buildAndExpand(iArticleService.insert(articleDto).getId()).toUri();
+                    .buildAndExpand(iArticleService.insert(articles)).toUri();
         return ResponseEntity.created(location).build();
     }
 }
