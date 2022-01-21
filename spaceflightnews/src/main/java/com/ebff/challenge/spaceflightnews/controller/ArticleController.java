@@ -33,11 +33,6 @@ public class ArticleController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
     private final IArticleService iArticleService;
 
-    @GetMapping("/")
-    public String message(){
-        return Constants.MESSAGE_TITLE;
-    }
-
     @GetMapping("/articles")
     public ResponseEntity<Page<Article>> findAll(Pageable pageable){
         try{
