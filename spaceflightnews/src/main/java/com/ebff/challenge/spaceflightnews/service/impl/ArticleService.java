@@ -69,7 +69,7 @@ public class ArticleService implements IArticleService {
            articleRepository.deleteById(id);
            return new Response(Constants.SUCESS, Constants.DELETED_SUCCESSFUL);
        }else{
-           throw new CustomException(Constants.ARTICLE_NOT_FOUND);
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, Constants.ARTICLE_NOT_FOUND);
        }
     }
 }

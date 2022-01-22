@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(controllers = ArticleController.class)
 class ArticleControllerTest {
 
-    @Autowired
+   /* @Autowired
     private MockMvc mockMvc;
 
     @MockBean
@@ -25,7 +25,7 @@ class ArticleControllerTest {
 
     @Test
     public void findAllArticles() throws Exception{
-        /*Article article =
+        Article article =
                 new Article(10,
                             true,
                             "SpaceX wins $102 million Air Force contract to demonstrate technologies for point-to-point space transportation",
@@ -36,6 +36,6 @@ class ArticleControllerTest {
                             "2022-01-19T23:43:31.000Z",
                             "2022-01-19T23:43:31.896Z",
                             false,
-                        List<Event>(){"2e650790-ff3e-434a-b028-a6a1a13cfc94", "Launch Library 90"});*/
-    }
+                        List<Event>(){"2e650790-ff3e-434a-b028-a6a1a13cfc94", "Launch Library 90"});
+    }*/
 }
