@@ -1,5 +1,6 @@
 package com.ebff.challenge.spaceflightnews;
 
+import com.ebff.challenge.spaceflightnews.support.CronJobSync;
 import com.mongodb.client.MongoClient;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -14,7 +15,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SpaceflightnewsApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SpaceflightnewsApplication.class, args);
+
+
 	}
 
 }

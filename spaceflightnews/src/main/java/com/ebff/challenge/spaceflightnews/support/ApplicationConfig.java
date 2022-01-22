@@ -1,4 +1,4 @@
-package com.ebff.challenge.spaceflightnews.config;
+package com.ebff.challenge.spaceflightnews.support;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
