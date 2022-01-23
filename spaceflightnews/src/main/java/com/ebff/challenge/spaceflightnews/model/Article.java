@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @Getter
 @Setter
+@NoArgsConstructor
 public class Article {
 
     @Id
@@ -28,4 +29,16 @@ public class Article {
 
     private List<Launch> launches;
 
+    public Article(Long id, Boolean featured, String title, String url, String imageUrl, String newsSite, String summary, String publishedAt, List<Event> events, List<Launch> launches) {
+        this.id = id;
+        this.featured = featured;
+        this.title = title;
+        this.url = url;
+        this.imageUrl = imageUrl;
+        this.newsSite = newsSite;
+        this.summary = summary;
+        this.publishedAt = publishedAt;
+        this.events = events;
+        this.launches = launches;
+    }
 }
