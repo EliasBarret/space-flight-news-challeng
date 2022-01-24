@@ -3,26 +3,22 @@ package com.ebff.challenge.spaceflightnews.controller;
 import com.ebff.challenge.spaceflightnews.model.Article;
 import com.ebff.challenge.spaceflightnews.model.dto.ArticleAlterDto;
 import com.ebff.challenge.spaceflightnews.service.IArticleService;
-
-import com.ebff.challenge.spaceflightnews.util.Constants;
 import com.ebff.challenge.spaceflightnews.util.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import org.modelmapper.ModelMapper;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.data.domain.Pageable;
 
 import javax.validation.Valid;
 import java.net.URI;

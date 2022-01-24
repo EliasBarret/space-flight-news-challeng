@@ -35,5 +35,9 @@ $ mvn clean install
 http://localhost:8081/swagger-ui/index.html
 ```
 
+**Link Video Explicativo**
+```
+https://www.loom.com/share/3278b43a3b52410bb371bfbff66e3067
+```
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)

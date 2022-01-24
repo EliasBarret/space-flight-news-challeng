@@ -2,7 +2,6 @@ package com.ebff.challenge.spaceflightnews.model.dto;
 
 import com.ebff.challenge.spaceflightnews.model.Event;
 import com.ebff.challenge.spaceflightnews.model.Launch;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
